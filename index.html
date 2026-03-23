@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Démarrage — David R.</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234f8ef7'/><text x='50%25' y='50%25' font-family='Outfit,sans-serif' font-size='13' font-weight='600' fill='white' text-anchor='middle' dominant-baseline='central'>DR</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -71,15 +72,20 @@
     padding: 4px 12px; border-radius: 20px;
   }
 
-  .search-bar a {
+  .search-bar form {
     display: flex; align-items: center; gap: 8px;
     background: var(--surface); border: 0.5px solid var(--border);
     border-radius: 10px; padding: 7px 14px;
-    text-decoration: none; color: var(--muted); font-size: 12px;
-    transition: border-color 0.2s; flex-shrink: 0;
+    transition: border-color 0.2s;
   }
-  .search-bar a:hover { border-color: var(--accent); }
-  .search-bar a svg { opacity: 0.5; flex-shrink: 0; }
+  .search-bar form:focus-within { border-color: var(--accent); }
+  .search-bar svg { opacity: 0.5; flex-shrink: 0; }
+  .search-bar input {
+    background: transparent; border: none; outline: none;
+    color: var(--text); font-family: 'Outfit', sans-serif;
+    font-size: 12px; width: 100%;
+  }
+  .search-bar input::placeholder { color: var(--muted); }
 
   .main {
     flex: 1;
@@ -93,8 +99,8 @@
   .col { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 
   .col-label {
-    font-size: 9px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #c0c4d6;
     padding-left: 2px; white-space: nowrap;
     overflow: hidden; text-overflow: ellipsis;
   }
@@ -125,7 +131,9 @@
   .tile-icon img { width: 24px; height: 24px; object-fit: contain; }
 
   .tile-name {
-    font-size: 10px; color: var(--muted);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #a8b0c8;
     text-align: center; line-height: 1.2;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     width: 100%;
@@ -160,36 +168,15 @@
 </header>
 
 <div class="search-bar">
-  <a href="https://www.google.fr/search" target="_blank">
+  <form action="https://www.google.fr/search" method="get" target="_blank">
     <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    Rechercher sur Google...
-  </a>
+    <input type="text" name="q" placeholder="Rechercher sur Google..." autocomplete="off" autofocus>
+  </form>
 </div>
 
 <div class="main">
 
-  <!-- Col 1 : Réseau -->
-  <div class="col">
-    <div class="col-label">📡 Réseau</div>
-    <a class="tile" href="http://www.orange.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=orange.fr&sz=64" alt="Orange"></div>
-      <span class="tile-name">Orange</span>
-    </a>
-    <a class="tile" href="https://www.sosh.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=sosh.fr&sz=64" alt="Sosh"></div>
-      <span class="tile-name">Sosh</span>
-    </a>
-    <a class="tile" href="https://portail.free.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=free.fr&sz=64" alt="Free"></div>
-      <span class="tile-name">Free</span>
-    </a>
-    <a class="tile" href="http://mafreebox.freebox.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=free.fr&sz=64" alt="Freebox"></div>
-      <span class="tile-name">Freebox</span>
-    </a>
-  </div>
-
-  <!-- Col 2 : Google & IA -->
+  <!-- Col 1 : Google & IA -->
   <div class="col">
     <div class="col-label">🔍 Google &amp; IA</div>
     <a class="tile" href="http://www.google.fr" target="_blank">
@@ -214,40 +201,32 @@
     </a>
   </div>
 
-  <!-- Col 3 : Streaming -->
+  <!-- Col 2 : Admin -->
   <div class="col">
-    <div class="col-label">🎬 Streaming</div>
-    <a class="tile" href="https://www.netflix.com/browse" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=netflix.com&sz=64" alt="Netflix"></div>
-      <span class="tile-name">Netflix</span>
+    <div class="col-label">📋 Admin</div>
+    <a class="tile" href="https://www.impots.gouv.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=impots.gouv.fr&sz=64" alt="Impôts"></div>
+      <span class="tile-name">Impôts</span>
     </a>
-    <a class="tile" href="https://www.primevideo.com" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=primevideo.com&sz=64" alt="Prime Video"></div>
-      <span class="tile-name">Prime Video</span>
+    <a class="tile" href="https://www.ameli.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=ameli.fr&sz=64" alt="Ameli"></div>
+      <span class="tile-name">Ameli</span>
     </a>
-    <a class="tile" href="https://www.deezer.com" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=deezer.com&sz=64" alt="Deezer"></div>
-      <span class="tile-name">Deezer</span>
+    <a class="tile" href="https://www.maif.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=maif.fr&sz=64" alt="MAIF"></div>
+      <span class="tile-name">MAIF</span>
     </a>
-    <a class="tile" href="https://www.youtube.com" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="YouTube"></div>
-      <span class="tile-name">YouTube</span>
+    <a class="tile" href="https://www.mobilitemutuelle.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=mobilitemutuelle.fr&sz=64" alt="Mutuelle"></div>
+      <span class="tile-name">Mutuelle</span>
     </a>
-    <a class="tile" href="https://www.ugc.fr/cinema.html?id=43" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=ugc.fr&sz=64" alt="UGC"></div>
-      <span class="tile-name">UGC</span>
-    </a>
-    <a class="tile" href="http://programme-tv.nouvelobs.com/" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=nouvelobs.com&sz=64" alt="TV"></div>
-      <span class="tile-name">Prog. TV</span>
-    </a>
-    <a class="tile" href="http://www.fdjeux.com" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=fdj.fr&sz=64" alt="FDJ"></div>
-      <span class="tile-name">FDJ</span>
+    <a class="tile" href="https://total.direct-energie.com/" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=totalenergies.fr&sz=64" alt="TotalÉnergie"></div>
+      <span class="tile-name">TotalÉnergie</span>
     </a>
   </div>
 
-  <!-- Col 4 : Shopping -->
+  <!-- Col 3 : Shopping -->
   <div class="col">
     <div class="col-label">🛒 Shopping</div>
     <a class="tile" href="http://www.amazon.fr" target="_blank">
@@ -280,20 +259,40 @@
     </a>
   </div>
 
-  <!-- Col 5 : Banque -->
+  <!-- Col 4 : Streaming -->
   <div class="col">
-    <div class="col-label">💳 Banque</div>
-    <a class="tile" href="https://www.boursorama-banque.com" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=boursorama-banque.com&sz=64" alt="Boursorama"></div>
-      <span class="tile-name">Boursorama</span>
+    <div class="col-label">🎬 Streaming</div>
+    <a class="tile" href="https://www.netflix.com/browse" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=netflix.com&sz=64" alt="Netflix"></div>
+      <span class="tile-name">Netflix</span>
     </a>
-    <a class="tile" href="http://www.caisse-epargne.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=caisse-epargne.fr&sz=64" alt="Caisse Épargne"></div>
-      <span class="tile-name">C. Épargne</span>
+    <a class="tile" href="https://www.primevideo.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=primevideo.com&sz=64" alt="Prime Video"></div>
+      <span class="tile-name">Prime Video</span>
+    </a>
+    <a class="tile" href="https://www.deezer.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=deezer.com&sz=64" alt="Deezer"></div>
+      <span class="tile-name">Deezer</span>
+    </a>
+    <a class="tile" href="https://www.youtube.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="YouTube"></div>
+      <span class="tile-name">YouTube</span>
+    </a>
+    <a class="tile" href="https://www.ugc.fr/cinema.html?id=43" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=ugc.fr&sz=64" alt="UGC"></div>
+      <span class="tile-name">UGC</span>
+    </a>
+    <a class="tile" href="http://programme-tv.nouvelobs.com/" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=nouvelobs.com&sz=64" alt="TV"></div>
+      <span class="tile-name">Prog. TV</span>
+    </a>
+    <a class="tile" href="http://www.fdjeux.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=fdj.fr&sz=64" alt="FDJ"></div>
+      <span class="tile-name">FDJ</span>
     </a>
   </div>
 
-  <!-- Col 6 : Trail & Sport -->
+  <!-- Col 5 : Trail & Sport -->
   <div class="col">
     <div class="col-label">🏃 Trail &amp; Sport</div>
     <a class="tile" href="https://connect.garmin.com/modern/" target="_blank">
@@ -321,6 +320,31 @@
       </div>
       <span class="tile-name">Plans GGT</span>
     </a>
+    <a class="tile" href="https://www.genepigroupetrail.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=genepigroupetrail.com&sz=64" alt="GGT"></div>
+      <span class="tile-name">Site GGT</span>
+    </a>
+  </div>
+
+  <!-- Col 6 : Réseau -->
+  <div class="col">
+    <div class="col-label">📡 Réseau</div>
+    <a class="tile" href="http://www.orange.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=orange.fr&sz=64" alt="Orange"></div>
+      <span class="tile-name">Orange</span>
+    </a>
+    <a class="tile" href="https://www.sosh.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=sosh.fr&sz=64" alt="Sosh"></div>
+      <span class="tile-name">Sosh</span>
+    </a>
+    <a class="tile" href="https://portail.free.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=free.fr&sz=64" alt="Free"></div>
+      <span class="tile-name">Free</span>
+    </a>
+    <a class="tile" href="http://mafreebox.freebox.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=free.fr&sz=64" alt="Freebox"></div>
+      <span class="tile-name">Freebox</span>
+    </a>
   </div>
 
   <!-- Col 7 : Travail -->
@@ -340,32 +364,22 @@
     </a>
   </div>
 
-  <!-- Col 8 : Admin -->
+  <!-- Col 8 : Banque -->
   <div class="col">
-    <div class="col-label">📋 Admin</div>
-    <a class="tile" href="https://www.impots.gouv.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=impots.gouv.fr&sz=64" alt="Impôts"></div>
-      <span class="tile-name">Impôts</span>
+    <div class="col-label">💳 Banque</div>
+    <a class="tile" href="https://www.boursorama-banque.com" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=boursorama-banque.com&sz=64" alt="Boursorama"></div>
+      <span class="tile-name">Boursorama</span>
     </a>
-    <a class="tile" href="https://www.ameli.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=ameli.fr&sz=64" alt="Ameli"></div>
-      <span class="tile-name">Ameli</span>
-    </a>
-    <a class="tile" href="https://www.maif.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=maif.fr&sz=64" alt="MAIF"></div>
-      <span class="tile-name">MAIF</span>
-    </a>
-    <a class="tile" href="https://www.mobilitemutuelle.fr" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=mobilitemutuelle.fr&sz=64" alt="Mutuelle"></div>
-      <span class="tile-name">Mutuelle</span>
-    </a>
-    <a class="tile" href="https://total.direct-energie.com/" target="_blank">
-      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=totalenergies.fr&sz=64" alt="TotalÉnergie"></div>
-      <span class="tile-name">TotalÉnergie</span>
+    <a class="tile" href="http://www.caisse-epargne.fr" target="_blank">
+      <div class="tile-icon"><img src="https://www.google.com/s2/favicons?domain=caisse-epargne.fr&sz=64" alt="Caisse Épargne"></div>
+      <span class="tile-name">C. Épargne</span>
     </a>
   </div>
 
 </div>
+
+<footer style="position:relative;z-index:1;text-align:center;font-size:11px;color:rgba(122,128,153,0.45);padding:4px 0 6px;flex-shrink:0;">Page de démarrage · David ROUSSEL · Magny-les-Hameaux</footer>
 
 <script>
   function updateClock() {
@@ -385,7 +399,7 @@
   updateClock();
   setInterval(updateClock, 30000);
 
-  /* ── Particules ── */
+  /* Particules */
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
 
@@ -409,21 +423,15 @@
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const W = canvas.width, H = canvas.height;
-
     pts.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(79,142,247,' + p.a + ')';
       ctx.fill();
     });
-
     const LINK_DIST = 120;
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
@@ -431,11 +439,10 @@
         const dy = pts[i].y - pts[j].y;
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < LINK_DIST) {
-          const alpha = 0.12 * (1 - d / LINK_DIST);
           ctx.beginPath();
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
-          ctx.strokeStyle = 'rgba(79,142,247,' + alpha + ')';
+          ctx.strokeStyle = 'rgba(79,142,247,' + (0.12 * (1 - d / LINK_DIST)) + ')';
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
